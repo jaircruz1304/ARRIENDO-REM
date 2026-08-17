@@ -7,8 +7,8 @@ const OUT_DIR = 'data';
 const OUT_JSON = path.join(OUT_DIR, 'control-arriendo.json');
 const OUT_META = path.join(OUT_DIR, 'control-arriendo-meta.json');
 
-const SHARE_ID = 'IQCEZGrGikXuS5b6aRSzVFAyAXDkOmk8yH41W7KyO24twBw?e=tfxIE7';
-const SHARE_LINK = 'https://fiasec-my.sharepoint.com/:x:/g/personal/jcruzg_fias_org_ec/IQCEZGrGikXuS5b6aRSzVFAyAXDkOmk8yH41W7KyO24twBw?e=tfxIE7';
+const SHARE_ID = 'IQD9_DrmEBFqSowUCslYrdfdARuxxJ1YNym-p5vYgaAsOd8';
+const SHARE_LINK = 'https://fiasec-my.sharepoint.com/:x:/g/personal/jcruzg_fias_org_ec/IQD9_DrmEBFqSowUCslYrdfdARuxxJ1YNym-p5vYgaAsOd8?e=aUaXW6';
 
 const DOWNLOAD_CANDIDATES = [
   {
