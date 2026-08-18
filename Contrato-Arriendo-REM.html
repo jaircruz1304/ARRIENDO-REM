@@ -3,335 +3,397 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Control Contrato Arriendo REM II-III</title>
+<meta name="color-scheme" content="light" />
+<title>Control de Arriendo | FIAS-2025-159</title>
 <style>
-:root {
-  --bg:#f4f7fb; --surface:#fff; --text:#172033; --muted:#667085; --line:#d9e2ec;
-  --canon:#153e75; --expensa:#0f766e; --servicio:#7c2d12; --resumen:#1f2937;
-  --success:#0f766e; --warning:#d97706; --danger:#b91c1c; --blue:#2563eb;
-  --shadow:0 16px 40px rgba(15,23,42,.10); --radius:18px;
+:root{
+  --navy:#0b2f4f;
+  --navy-2:#123f68;
+  --blue:#1f6fb2;
+  --cyan:#0e95a8;
+  --teal:#087b72;
+  --green:#16835d;
+  --amber:#c77700;
+  --red:#b84242;
+  --ink:#152238;
+  --muted:#65758b;
+  --bg:#f3f7fb;
+  --card:#ffffff;
+  --line:#dde6ef;
+  --soft:#edf4fa;
+  --shadow:0 14px 38px rgba(21,48,78,.10);
+  --radius:20px;
 }
-*{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#eef5ff,#f7fbf8 44%,#fff7ed);color:var(--text)}
-a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
-.app{width:min(1500px,calc(100% - 28px));margin:0 auto;padding:24px 0 42px}
-.hero{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:stretch;background:linear-gradient(135deg,#102a56,#153e75 55%,#0f766e);color:#fff;padding:26px;border-radius:26px;box-shadow:var(--shadow)}
-.logo-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap} .logo{height:42px;max-width:150px;object-fit:contain;background:#fff;border-radius:12px;padding:7px 10px}
-.eyebrow{padding:7px 12px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.12);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
-h1{font-size:clamp(25px,4vw,44px);line-height:1.05;margin:14px 0 8px;letter-spacing:-.04em} p{line-height:1.55}
-.hero p{max-width:960px;color:rgba(255,255,255,.84);margin:0} .credit{margin-top:12px;color:rgba(255,255,255,.82);font-weight:700} .credit a{color:#fff;background:#0a66c2;border-radius:999px;padding:6px 10px;margin-left:6px}
-.side{display:grid;gap:10px;min-width:260px} .hero-card{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:14px} .hero-card strong{display:block;color:rgba(255,255,255,.72);font-size:12px;text-transform:uppercase} .hero-card span{font-size:21px;font-weight:900}
-.panel{background:rgba(255,255,255,.88);border:1px solid rgba(217,226,236,.92);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(8px)} .section{margin-top:16px}
-.note{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:14px} .note-card{border:1px solid var(--line);border-radius:15px;background:#fff;padding:14px} .note-card b{display:block;margin-bottom:6px}
-.filters{display:grid;grid-template-columns:180px 210px 1fr auto;gap:12px;align-items:end;padding:16px} label{display:block;color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:6px} select,input{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 12px;min-height:42px} button{border:0;border-radius:12px;padding:11px 14px;font-weight:900;cursor:pointer;background:var(--blue);color:#fff}
-.kpis{display:grid;grid-template-columns:repeat(7,minmax(145px,1fr));gap:12px;margin-top:16px} .kpi{padding:15px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 18px rgba(15,23,42,.06)} .kpi .label{font-size:11px;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.03em} .kpi .value{font-size:clamp(18px,2.4vw,28px);font-weight:950;letter-spacing:-.04em;margin-top:7px} .kpi .hint{font-size:12px;color:var(--muted);margin-top:4px}
-.table-head{padding:18px 18px 0;display:flex;justify-content:space-between;gap:16px;align-items:flex-start} .table-head h2{margin:0;font-size:20px} .table-head p{margin:6px 0 0;color:var(--muted);font-size:13px}
-.table-wrap{margin-top:14px;overflow:auto;max-height:620px;border-top:1px solid var(--line)} table{width:100%;border-collapse:separate;border-spacing:0;min-width:1900px;background:#fff} th,td{padding:10px 10px;border-bottom:1px solid #edf1f7;border-right:1px solid #edf1f7;text-align:left;font-size:12.5px;vertical-align:middle} th{position:sticky;top:0;z-index:3;background:#f8fafc;color:#475467;font-weight:900;text-transform:uppercase;letter-spacing:.025em;white-space:nowrap} thead tr.group th{top:0;color:#fff;text-align:center;font-size:12px;border-right:1px solid rgba(255,255,255,.18)} thead tr.fields th{top:39px}
-.group-id{background:#334155!important} .group-canon{background:var(--canon)!important} .group-expensa{background:var(--expensa)!important} .group-servicio{background:var(--servicio)!important} .group-resumen{background:var(--resumen)!important}
-td.money{text-align:right;font-weight:850;font-variant-numeric:tabular-nums} td.center{text-align:center} .badge{display:inline-flex;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:950;white-space:nowrap} .Pagado,.Completo{background:#dcfce7;color:#166534} .Parcial{background:#fef3c7;color:#92400e} .Pendiente{background:#fee2e2;color:#991b1b}
-.link-pill{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-weight:900;min-width:84px} .muted{color:var(--muted)}
-.footer{color:var(--muted);font-size:12px;padding:10px 2px}
-@media(max-width:1100px){.hero{grid-template-columns:1fr}.side{grid-template-columns:repeat(3,1fr);min-width:0}.note{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:700px){.app{width:calc(100% - 18px);padding-top:12px}.hero{padding:19px;border-radius:20px}.side,.filters,.kpis{grid-template-columns:1fr}.table-head{display:block}}
-@media print{body{background:#fff}.filters,button{display:none!important}.app{width:100%;padding:0}.hero,.panel,.kpi{box-shadow:none}.table-wrap{max-height:none;overflow:visible}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(31,111,178,.10),transparent 28%),
+    radial-gradient(circle at 96% 8%,rgba(14,149,168,.10),transparent 25%),
+    var(--bg);
+}
+button,input,select{font:inherit}
+a{color:inherit}
+.app{width:min(1260px,calc(100% - 28px));margin:0 auto;padding:20px 0 44px}
+
+/* HERO */
+.hero{
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  border-radius:28px;
+  padding:28px;
+  background:linear-gradient(125deg,var(--navy) 0%,var(--navy-2) 52%,var(--teal) 100%);
+  box-shadow:0 22px 55px rgba(9,43,73,.22);
+}
+.hero:after{
+  content:"";position:absolute;width:360px;height:360px;border-radius:50%;
+  right:-130px;top:-180px;border:52px solid rgba(255,255,255,.06);
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr);gap:24px;position:relative;z-index:1}
+.brand-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{height:44px;max-width:160px;background:#fff;border-radius:11px;padding:7px 11px;object-fit:contain}
+.contract-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.10);padding:8px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.02em}
+.hero h1{font-size:clamp(28px,4.6vw,48px);line-height:1.03;letter-spacing:-.045em;margin:20px 0 10px;max-width:850px}
+.hero-sub{margin:0;color:rgba(255,255,255,.80);font-size:15px;max-width:760px}
+.admin{display:flex;align-items:center;gap:8px;margin-top:18px;font-size:13px;color:rgba(255,255,255,.78)}
+.admin strong{color:#fff}
+.hero-side{display:grid;gap:11px;align-content:start}
+.hero-amount{padding:15px 17px;border-radius:17px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.10);backdrop-filter:blur(10px)}
+.hero-amount span{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.66)}
+.hero-amount strong{display:block;font-size:25px;letter-spacing:-.03em;margin-top:5px}
+
+/* NAV/CONTROL */
+.toolbar{
+  margin-top:16px;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:18px;
+  box-shadow:var(--shadow);padding:13px;display:grid;grid-template-columns:160px 190px 1fr auto;gap:10px;align-items:end;
+  position:sticky;top:8px;z-index:20;backdrop-filter:blur(14px)
+}
+.field label{display:block;font-size:10px;color:var(--muted);font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px 3px}
+.field select,.field input{width:100%;height:43px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:#fff;color:var(--ink);outline:none;transition:.2s}
+.field select:focus,.field input:focus{border-color:#86b6dc;box-shadow:0 0 0 4px rgba(31,111,178,.10)}
+.btn{height:43px;border:0;border-radius:12px;padding:0 15px;cursor:pointer;font-weight:800;transition:.18s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{transform:translateY(-1px);background:#12466f}
+.btn-ghost{background:#edf3f8;color:var(--navy)}
+
+/* SECTIONS */
+.section{margin-top:18px}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:0 2px 12px}
+.section-title h2{font-size:20px;letter-spacing:-.025em;margin:0}.section-title p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.panel{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* EXECUTIVE SUMMARY */
+.executive{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:14px}
+.progress-panel{padding:22px}
+.progress-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.progress-label{font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.progress-value{font-size:clamp(28px,5vw,44px);font-weight:950;letter-spacing:-.05em;margin-top:5px}
+.progress-caption{font-size:13px;color:var(--muted);margin-top:3px}
+.progress-track{height:13px;background:#eaf0f5;border-radius:999px;overflow:hidden;margin-top:20px}
+.progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--teal));width:0%;transition:width .5s ease}
+.money-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.money-box{background:#f8fbfd;border:1px solid #e7eef5;border-radius:14px;padding:13px}
+.money-box span{display:block;color:var(--muted);font-size:11px;font-weight:800}.money-box strong{display:block;font-size:18px;margin-top:5px;letter-spacing:-.025em}
+
+.status-panel{padding:18px;display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center}
+.donut{--p:0;--ring:var(--blue);width:124px;height:124px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--ring) calc(var(--p)*1%),#e8eef4 0);position:relative}
+.donut:before{content:"";position:absolute;inset:14px;background:#fff;border-radius:50%}
+.donut-content{position:relative;z-index:1;text-align:center}.donut-content strong{display:block;font-size:25px;line-height:1}.donut-content span{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase}
+.status-list{display:grid;gap:8px}
+.status-filter{border:1px solid var(--line);background:#fff;border-radius:13px;padding:10px 11px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;text-align:left;color:var(--ink)}
+.status-filter:hover{background:#f8fbfd}.status-filter.active{outline:2px solid rgba(31,111,178,.16);border-color:#a9cbe5}
+.status-left{display:flex;gap:8px;align-items:center}.dot{width:9px;height:9px;border-radius:50%}.dot.complete{background:var(--green)}.dot.partial{background:var(--amber)}.dot.pending{background:var(--red)}
+.status-filter strong{font-size:13px}.status-filter span{font-size:12px;color:var(--muted);font-weight:800}
+
+/* YEAR SUMMARY */
+.year-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.year-card{padding:16px 17px}
+.year-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.year-head strong{font-size:21px}.mini-badge{font-size:11px;font-weight:850;padding:5px 8px;border-radius:999px;background:#edf4fa;color:var(--navy)}
+.year-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:13px}.year-stat{border-top:1px solid #e8eef3;padding-top:10px}.year-stat span{display:block;color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase}.year-stat strong{display:block;margin-top:4px;font-size:14px}
+
+/* ALERT / NEXT */
+.attention{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.attention-card{padding:17px;display:flex;gap:13px;align-items:flex-start}
+.icon-wrap{flex:0 0 40px;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:#edf5fb;color:var(--navy)}
+.icon-wrap.warn{background:#fff4df;color:var(--amber)}
+.attention-card h3{margin:1px 0 4px;font-size:15px}.attention-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+/* MONTH CARDS */
+.month-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.month-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 26px rgba(22,48,78,.07);overflow:hidden;transition:.2s;position:relative}
+.month-card:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(22,48,78,.11)}
+.month-card.next{border-color:#8ebcdc;box-shadow:0 0 0 3px rgba(31,111,178,.08),0 12px 30px rgba(22,48,78,.08)}
+.month-head{padding:17px 18px 13px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;border-bottom:1px solid #edf2f6}
+.month-title small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;margin-bottom:4px}.month-title h3{margin:0;font-size:21px;letter-spacing:-.025em}.month-total{text-align:right}.month-total span{display:block;color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase}.month-total strong{display:block;font-size:18px;margin-top:3px}
+.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;margin-top:8px}.badge:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}.badge.Completo,.badge.Pagado{background:#e5f6ef;color:#137152}.badge.Parcial{background:#fff2d9;color:#9a5f00}.badge.Pendiente{background:#fdeaea;color:#a93636}
+.month-progress{height:5px;background:#edf2f5}.month-progress>span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));width:0%}
+.payment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:14px 14px 4px}
+.payment{border:1px solid #e5ecf2;border-radius:15px;padding:12px;min-width:0}.payment.canon{border-top:3px solid var(--blue)}.payment.expensa{border-top:3px solid var(--teal)}.payment.servicio{border-top:3px solid var(--amber)}
+.payment-label{display:flex;align-items:center;justify-content:space-between;gap:5px;font-size:10px;font-weight:900;text-transform:uppercase;color:var(--muted);letter-spacing:.05em}.payment strong{display:block;font-size:17px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.payment .sub{font-size:10px;color:var(--muted);margin-top:3px;min-height:15px}
+.payment .badge{margin-top:8px;padding:4px 7px;font-size:9px}
+.card-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px 14px}.note-preview{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:65%}.detail-btn{border:0;background:#edf4fa;color:var(--navy);font-weight:850;border-radius:10px;padding:8px 10px;cursor:pointer;white-space:nowrap}.detail-btn:hover{background:#dfeefa}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(8,24,39,.58);z-index:100;display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(4px)}
+.modal.open{display:flex}.modal-card{width:min(850px,100%);max-height:min(760px,90vh);overflow:auto;background:#fff;border-radius:22px;box-shadow:0 28px 80px rgba(0,0,0,.28)}
+.modal-head{position:sticky;top:0;z-index:2;background:#fff;padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.modal-head h3{margin:0;font-size:20px}.close-btn{width:38px;height:38px;border:0;border-radius:12px;background:#eef3f7;color:var(--ink);font-size:21px;cursor:pointer}
+.modal-body{padding:18px 20px 22px}.detail-sections{display:grid;gap:13px}.detail-block{border:1px solid var(--line);border-radius:16px;padding:15px}.detail-block h4{margin:0 0 12px;font-size:14px}.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px}.detail-item span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;font-weight:900;letter-spacing:.05em}.detail-item strong,.detail-item div{display:block;margin-top:4px;font-size:13px;overflow-wrap:anywhere}.detail-link{display:inline-flex!important;align-items:center;gap:6px;background:#eaf3fb;color:#145b94;border-radius:9px;padding:7px 9px;text-decoration:none;font-weight:850}.detail-link:hover{background:#dcecf8}
+.observation{margin-top:13px;border-radius:14px;background:#f7fafc;padding:13px 14px;border-left:4px solid var(--navy)}.observation span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;font-weight:900}.observation p{margin:5px 0 0;font-size:13px;line-height:1.45}
+
+.empty{grid-column:1/-1;padding:42px 20px;text-align:center;border:1px dashed #cddae6;border-radius:18px;background:#fff;color:var(--muted)}
+.footer{padding:15px 4px 0;color:var(--muted);font-size:11px;text-align:center}
+
+@media(max-width:980px){.hero-grid,.executive{grid-template-columns:1fr}.hero-side{grid-template-columns:repeat(3,1fr)}.month-grid{grid-template-columns:1fr}.attention{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr 1fr}.toolbar .field.search{grid-column:1/-1}.toolbar .btn{width:100%}.status-panel{grid-template-columns:120px 1fr}}
+@media(max-width:650px){.app{width:calc(100% - 16px);padding-top:8px}.hero{padding:20px;border-radius:21px}.hero-side{grid-template-columns:1fr}.toolbar{position:static;grid-template-columns:1fr}.toolbar .field.search{grid-column:auto}.money-grid,.year-stats,.payment-grid{grid-template-columns:1fr}.status-panel{grid-template-columns:1fr}.donut{margin:auto}.detail-grid{grid-template-columns:1fr}.month-head{align-items:center}.note-preview{max-width:55%}}
+@media print{body{background:#fff}.toolbar,.detail-btn,.modal,.btn{display:none!important}.app{width:100%;padding:0}.hero,.panel,.month-card{box-shadow:none}.month-grid{grid-template-columns:1fr 1fr}.month-card{break-inside:avoid}.hero{border-radius:0}.section{margin-top:12px}}
 </style>
 </head>
 <body>
 <div class="app">
-  <section class="hero">
-    <div>
-      <div class="logo-row"><img class="logo" src="https://fias.org.ec/wp-content/uploads/2021/11/Logo_FIAS_web.png" alt="FIAS" onerror="this.style.display='none'"></div>
-      <h1>Arrendamiento Oficina 8B REM II-III</h1>
-      
-      <div class="credit">Administración del contrato:<a href="https://ec.linkedin.com/in/jair-cruz-gallegos-65998776" target="_blank" rel="noopener">Jair Cruz</a></div>
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="brand-row">
+          <img class="logo" src="https://fias.org.ec/wp-content/uploads/2021/11/Logo_FIAS_web.png" alt="FIAS" onerror="this.style.display='none'" />
+          <span class="contract-chip">● Control contractual dinámico</span>
+        </div>
+        <h1>Arrendamiento Oficina 8B REM</h1>
+        <p class="hero-sub">Seguimiento ejecutivo del Contrato FIAS-2025-159. La información se consolida por mes para identificar rápidamente pagos, saldos, documentación y expedientes.</p>
+        <div class="admin">Administración del contrato: <strong>Jair Cruz</strong></div>
+      </div>
+      <div class="hero-side">
+        <div class="hero-amount"><span>Canon mensual</span><strong id="heroCanon">$0,00</strong></div>
+        <div class="hero-amount"><span>Expensas mensuales</span><strong id="heroExpensa">$0,00</strong></div>
+        <div class="hero-amount"><span>Compromiso fijo / mes</span><strong id="heroFixed">$0,00</strong></div>
+      </div>
     </div>
-    <div class="side">
-      <div class="hero-card"><strong>Canon fijo</strong><span id="heroCanon">$0,00</span></div>
-      <div class="hero-card"><strong>Expensa fija</strong><span id="heroExpensa">$0,00</span></div>
-      <div class="hero-card"><strong>Total fijo mensual</strong><span id="heroFixed">$0,00</span></div>
+  </header>
+
+  <section class="toolbar" aria-label="Filtros">
+    <div class="field"><label for="yearFilter">Año</label><select id="yearFilter"></select></div>
+    <div class="field"><label for="statusFilter">Estado</label><select id="statusFilter"><option value="Todos">Todos</option><option value="Completo">Completo</option><option value="Parcial">Parcial</option><option value="Pendiente">Pendiente</option></select></div>
+    <div class="field search"><label for="searchBox">Buscar</label><input id="searchBox" type="search" placeholder="Mes, factura, solicitud, observación..." /></div>
+    <button class="btn btn-ghost" id="resetBtn" type="button">Limpiar</button>
+  </section>
+
+  <section class="section">
+    <div class="section-title"><div><h2>Situación del contrato</h2><p>Una lectura rápida de ejecución y obligaciones pendientes.</p></div><button class="btn btn-primary" onclick="window.print()" type="button">Imprimir / PDF</button></div>
+    <div class="executive">
+      <article class="panel progress-panel">
+        <div class="progress-top">
+          <div>
+            <div class="progress-label">Avance de obligaciones fijas</div>
+            <div class="progress-value" id="progressPct">0%</div>
+            <div class="progress-caption" id="progressCaption">Sin registros ejecutados.</div>
+          </div>
+          <span class="mini-badge" id="periodCount">0 meses</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="money-grid">
+          <div class="money-box"><span>Programado</span><strong id="fixedProgrammed">$0,00</strong></div>
+          <div class="money-box"><span>Ejecutado</span><strong id="fixedExecuted">$0,00</strong></div>
+          <div class="money-box"><span>Saldo pendiente</span><strong id="fixedBalance">$0,00</strong></div>
+        </div>
+      </article>
+
+      <article class="panel status-panel">
+        <div class="donut" id="statusDonut"><div class="donut-content"><strong id="completePct">0%</strong><span>completo</span></div></div>
+        <div class="status-list">
+          <button class="status-filter" data-status="Completo" type="button"><span class="status-left"><i class="dot complete"></i><strong>Completos</strong></span><span id="completeCount">0</span></button>
+          <button class="status-filter" data-status="Parcial" type="button"><span class="status-left"><i class="dot partial"></i><strong>Parciales</strong></span><span id="partialCount">0</span></button>
+          <button class="status-filter" data-status="Pendiente" type="button"><span class="status-left"><i class="dot pending"></i><strong>Pendientes</strong></span><span id="pendingCount">0</span></button>
+        </div>
+      </article>
     </div>
   </section>
 
-  
-
-  <section class="panel section">
-    <div class="filters">
-      <div><label>Año</label><select id="yearFilter"></select></div>
-      <div><label>Estado mensual</label><select id="statusFilter"><option value="Todos">Todos</option><option value="Completo">Completo</option><option value="Parcial">Parcial</option><option value="Pendiente">Pendiente</option></select></div>
-      <div><label>Buscar</label><input id="searchBox" type="search" placeholder="Mes, factura, solicitud o notificación..."></div>
-      <button id="resetBtn">Limpiar filtros</button>
-    </div>
+  <section class="section">
+    <div class="section-title"><div><h2>Resumen por año</h2><p>Consolidado sin necesidad de revisar mes por mes.</p></div></div>
+    <div class="year-grid" id="yearSummary"></div>
   </section>
 
-  <section class="kpis" id="kpis"></section>
-
-  <section class="panel section">
-    <div class="table-head"><div><h2>Matriz de ejecución con enlaces junto a cada tipo de pago</h2><p>El orden de columnas reproduce la lógica de control: identificación, bloque canon, bloque expensas, bloque servicios y resumen.</p></div><button onclick="window.print()">Imprimir / PDF</button></div>
-    <div class="table-wrap"><table id="dataTable"><thead></thead><tbody></tbody></table></div>
+  <section class="section">
+    <div class="attention" id="attention"></div>
   </section>
-  <div class="footer"></div>
+
+  <section class="section" id="monthlySection">
+    <div class="section-title"><div><h2>Seguimiento mensual</h2><p>Canon, expensas y servicios en una sola tarjeta. El detalle documental se abre únicamente cuando lo necesitas.</p></div><span class="mini-badge" id="visibleCount">0 visibles</span></div>
+    <div class="month-grid" id="monthGrid"></div>
+  </section>
+
+  <div class="footer" id="footer"></div>
 </div>
+
+<div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <div class="modal-head"><h3 id="modalTitle">Detalle del periodo</h3><button class="close-btn" id="closeModal" type="button" aria-label="Cerrar">×</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
 <script>
-let DATA = {
-  registros: [],
-  resumen: {
-    canon: 0,
-    expensa: 0,
-    fixed: 0,
-    fixed_executed: 0,
-    fixed_balance: 0,
-    services: 0,
-    total: 0,
-    complete: 0,
-    partial: 0,
-    pending: 0,
-    months: 0
-  }
-};
+let DATA={registros:[],resumen:{}};
+const DATA_URL='./data/control-arriendo.json';
+const money=new Intl.NumberFormat('es-EC',{style:'currency',currency:'USD',minimumFractionDigits:2});
+const fmt=v=>money.format(Number(v)||0);
+const el=id=>document.getElementById(id);
+const safeText=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=t=>String(t??'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const val=v=>Number(v)||0;
+const has=v=>v!==null&&v!==undefined&&String(v).trim()!=='';
 
-const DATA_URL = './data/control-arriendo.json';
-
-const money = new Intl.NumberFormat('es-EC', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2
-});
-
-const fmt = v => money.format(Number(v) || 0);
-
-const norm = t => String(t ?? '')
-  .toLowerCase()
-  .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '');
-
-const el = id => document.getElementById(id);
-
-const columns = [
-  {key:'periodo',label:'Periodo'},
-  {key:'estado_mensual',label:'Estado mes',type:'badge'},
-
-  {key:'estado_canon',label:'Estado canon',type:'badge'},
-  {key:'canon_ejecutado',label:'Canon ejecutado',type:'money'},
-  {key:'factura_canon',label:'Factura/obs. canon'},
-  {key:'fecha_pago_canon',label:'Fecha canon'},
-  {key:'solicitud_pago_canon',label:'Solicitud canon'},
-  {key:'link_expediente_canon',label:'Enlace canon',type:'link'},
-
-  {key:'estado_expensas',label:'Estado expensa',type:'badge'},
-  {key:'expensas_ejecutadas',label:'Expensa ejecutada',type:'money'},
-  {key:'notificacion_expensas',label:'Notificación expensa'},
-  {key:'fecha_pago_expensas',label:'Fecha expensa'},
-  {key:'solicitud_pago_expensas',label:'Solicitud expensa'},
-  {key:'link_expediente_expensas',label:'Enlace expensa',type:'link'},
-
-  {key:'estado_servicios',label:'Estado servicios',type:'badge'},
-  {key:'servicios_basicos',label:'Servicios USD',type:'money'},
-  {key:'factura_servicios',label:'Factura/obs. servicios'},
-  {key:'fecha_pago_servicios',label:'Fecha servicios'},
-  {key:'solicitud_pago_servicios',label:'Solicitud servicios'},
-  {key:'link_expediente_servicios',label:'Enlace servicios',type:'link'},
-
-  {key:'saldo_fijo',label:'Saldo fijo',type:'money'},
-  {key:'desembolso_total',label:'Desembolso total',type:'money'},
-  {key:'observacion',label:'Observación'}
-];
-
-function safeText(value) {
-  return String(value ?? '')
-    .replace(/[&<>"']/g, char => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#39;'
-    }[char]));
-}
-
-function computeResumen(rows) {
-  const canon = rows.find(r => Number(r.canon_programado) > 0)?.canon_programado || 0;
-  const expensa = rows.find(r => Number(r.expensas_programadas) > 0)?.expensas_programadas || 0;
-
-  return {
-    canon: Number(canon) || 0,
-    expensa: Number(expensa) || 0,
-    fixed: (Number(canon) || 0) + (Number(expensa) || 0),
-    fixed_executed: rows.reduce((s, r) => s + (Number(r.fijo_ejecutado) || 0), 0),
-    fixed_balance: rows.reduce((s, r) => s + (Number(r.saldo_fijo) || 0), 0),
-    services: rows.reduce((s, r) => s + (Number(r.servicios_basicos) || 0), 0),
-    total: rows.reduce((s, r) => s + (Number(r.desembolso_total) || 0), 0),
-    complete: rows.filter(r => r.estado_mensual === 'Completo').length,
-    partial: rows.filter(r => r.estado_mensual === 'Parcial').length,
-    pending: rows.filter(r => r.estado_mensual === 'Pendiente').length,
-    months: rows.length
+function calc(rows){
+  const canon=rows.find(r=>val(r.canon_programado)>0)?.canon_programado||0;
+  const expensa=rows.find(r=>val(r.expensas_programadas)>0)?.expensas_programadas||0;
+  return{
+    canon:val(canon),expensa:val(expensa),fixed:val(canon)+val(expensa),
+    programmed:rows.reduce((s,r)=>s+val(r.fijo_programado),0),
+    executed:rows.reduce((s,r)=>s+val(r.fijo_ejecutado),0),
+    balance:rows.reduce((s,r)=>s+val(r.saldo_fijo),0),
+    services:rows.reduce((s,r)=>s+val(r.servicios_basicos),0),
+    disbursed:rows.reduce((s,r)=>s+val(r.desembolso_total),0),
+    complete:rows.filter(r=>r.estado_mensual==='Completo').length,
+    partial:rows.filter(r=>r.estado_mensual==='Parcial').length,
+    pending:rows.filter(r=>r.estado_mensual==='Pendiente').length,
+    months:rows.length
   };
 }
 
-function setStatus(message, isError = false) {
-  const footer = document.querySelector('.footer');
-  if (!footer) return;
-  footer.textContent = message || '';
-  footer.style.color = isError ? '#b91c1c' : '';
-}
+function statusClass(s){return ['Completo','Pagado','Parcial','Pendiente'].includes(s)?s:'Pendiente'}
+function badge(s){const t=s||'Pendiente';return `<span class="badge ${statusClass(t)}">${safeText(t)}</span>`}
+function pct(executed,programmed){return programmed?Math.max(0,Math.min(100,(executed/programmed)*100)):0}
+function periodProgress(r){return pct(val(r.fijo_ejecutado),val(r.fijo_programado))}
+function detailValue(v){return has(v)?safeText(v):'<span style="color:#98a5b3">No registrado</span>'}
+function detailLink(url){return has(url)?`<a class="detail-link" href="${safeText(url)}" target="_blank" rel="noopener">Abrir expediente ↗</a>`:'<span style="color:#98a5b3">Sin enlace</span>'}
 
-async function loadData() {
-  try {
-    setStatus('Cargando datos dinámicos...');
-
-    const response = await fetch(`${DATA_URL}?v=${Date.now()}`, {
-      cache: 'no-store'
-    });
-
-    if (!response.ok) {
-      throw new Error(`No se pudo cargar ${DATA_URL}. HTTP ${response.status}`);
-    }
-
-    const payload = await response.json();
-
-    if (!payload || !Array.isArray(payload.registros)) {
-      throw new Error('El JSON no tiene la estructura esperada: { registros: [], resumen: {} }.');
-    }
-
-    DATA.registros = payload.registros;
-    DATA.resumen = payload.resumen || computeResumen(DATA.registros);
-
+async function loadData(){
+  try{
+    setFooter('Cargando datos dinámicos...');
+    const response=await fetch(`${DATA_URL}?v=${Date.now()}`,{cache:'no-store'});
+    if(!response.ok)throw new Error(`HTTP ${response.status}`);
+    const payload=await response.json();
+    if(!payload||!Array.isArray(payload.registros))throw new Error('Formato JSON no esperado');
+    DATA=payload;
     init();
-    setStatus(`Fuente dinámica: ${DATA_URL}. Registros cargados: ${DATA.registros.length}. Última lectura: ${new Date().toLocaleString('es-EC')}.`);
-  } catch (error) {
-    console.error('Error cargando datos dinámicos del dashboard:', error);
-
-    DATA = {
-      registros: [],
-      resumen: computeResumen([])
-    };
-
-    init();
-    setStatus(`Error de carga dinámica: ${error.message}`, true);
+    setFooter(`Fuente: ${DATA_URL} · ${DATA.registros.length} registros · Lectura ${new Date().toLocaleString('es-EC')}`);
+  }catch(err){
+    console.error(err);DATA={registros:[],resumen:{}};init();
+    setFooter(`No se pudo cargar la fuente dinámica: ${err.message}`,true);
   }
 }
 
-function init() {
-  const years = [...new Set(DATA.registros.map(r => r.anio).filter(Boolean))].sort();
+function setFooter(msg,error=false){el('footer').textContent=msg||'';el('footer').style.color=error?'#b84242':''}
 
-  el('yearFilter').innerHTML =
-    '<option value="Todos">Todos</option>' +
-    years.map(y => `<option value="${safeText(y)}">${safeText(y)}</option>`).join('');
+function init(){
+  const all=calc(DATA.registros);
+  el('heroCanon').textContent=fmt(all.canon);
+  el('heroExpensa').textContent=fmt(all.expensa);
+  el('heroFixed').textContent=fmt(all.fixed);
+  const years=[...new Set(DATA.registros.map(r=>r.anio).filter(Boolean))].sort();
+  el('yearFilter').innerHTML='<option value="Todos">Todos</option>'+years.map(y=>`<option value="${safeText(y)}">${safeText(y)}</option>`).join('');
 
-  el('heroCanon').textContent = fmt(DATA.resumen.canon);
-  el('heroExpensa').textContent = fmt(DATA.resumen.expensa);
-  el('heroFixed').textContent = fmt(DATA.resumen.fixed);
-
-  ['yearFilter', 'statusFilter', 'searchBox'].forEach(id => {
-    const node = el(id);
-    if (!node.dataset.bound) {
-      node.addEventListener('input', render);
-      node.addEventListener('change', render);
-      node.dataset.bound = '1';
-    }
+  ['yearFilter','statusFilter','searchBox'].forEach(id=>{
+    const n=el(id);if(!n.dataset.bound){n.addEventListener('input',render);n.addEventListener('change',render);n.dataset.bound='1';}
   });
+  if(!el('resetBtn').dataset.bound){el('resetBtn').onclick=()=>{el('yearFilter').value='Todos';el('statusFilter').value='Todos';el('searchBox').value='';render();};el('resetBtn').dataset.bound='1';}
 
-  if (!el('resetBtn').dataset.bound) {
-    el('resetBtn').onclick = () => {
-      el('yearFilter').value = 'Todos';
-      el('statusFilter').value = 'Todos';
-      el('searchBox').value = '';
-      render();
-    };
-    el('resetBtn').dataset.bound = '1';
-  }
-
+  document.querySelectorAll('.status-filter').forEach(btn=>btn.onclick=()=>{
+    const target=btn.dataset.status;
+    el('statusFilter').value=el('statusFilter').value===target?'Todos':target;
+    render();
+  });
+  el('closeModal').onclick=closeModal;
+  el('detailModal').addEventListener('click',e=>{if(e.target===el('detailModal'))closeModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
   render();
 }
 
-function filtered() {
-  const year = el('yearFilter').value;
-  const status = el('statusFilter').value;
-  const term = norm(el('searchBox').value);
-
-  return DATA.registros
-    .filter(r =>
-      (year === 'Todos' || String(r.anio) === year) &&
-      (status === 'Todos' || r.estado_mensual === status) &&
-      (!term || norm(Object.values(r).join(' ')).includes(term))
-    )
-    .sort((a, b) => String(a.period_key).localeCompare(String(b.period_key)));
+function filtered(){
+  const year=el('yearFilter').value,status=el('statusFilter').value,term=norm(el('searchBox').value);
+  return DATA.registros.filter(r=>(year==='Todos'||String(r.anio)===year)&&(status==='Todos'||r.estado_mensual===status)&&(!term||norm(Object.values(r).join(' ')).includes(term))).sort((a,b)=>String(a.period_key).localeCompare(String(b.period_key)));
 }
 
-function renderKpis(rows) {
-  const fijoProg = rows.reduce((s, r) => s + (Number(r.fijo_programado) || 0), 0);
-  const fijoEjec = rows.reduce((s, r) => s + (Number(r.fijo_ejecutado) || 0), 0);
-  const saldo = rows.reduce((s, r) => s + (Number(r.saldo_fijo) || 0), 0);
-  const serv = rows.reduce((s, r) => s + (Number(r.servicios_basicos) || 0), 0);
-  const total = rows.reduce((s, r) => s + (Number(r.desembolso_total) || 0), 0);
-  const completos = rows.filter(r => r.estado_mensual === 'Completo').length;
-  const avance = fijoProg ? ((fijoEjec / fijoProg) * 100).toFixed(1) : '0.0';
-
-  const kpis = [
-    ['Fijo programado', fmt(fijoProg), 'Canon + expensas'],
-    ['Fijo ejecutado', fmt(fijoEjec), avance + '% del fijo'],
-    ['Saldo fijo', fmt(saldo), 'Pendiente fijo'],
-    ['Servicios registrados', fmt(serv), 'Gasto variable'],
-    ['Desembolso total', fmt(total), 'Fijo + servicios'],
-    ['Meses completos', completos + '/' + rows.length, 'Periodo filtrado'],
-    ['Meses pendientes', rows.filter(r => r.estado_mensual === 'Pendiente').length, 'Sin ejecución completa']
-  ];
-
-  el('kpis').innerHTML = kpis.map(k => `
-    <article class="kpi">
-      <div class="label">${safeText(k[0])}</div>
-      <div class="value">${safeText(k[1])}</div>
-      <div class="hint">${safeText(k[2])}</div>
-    </article>
-  `).join('');
+function renderExecutive(rows){
+  const s=calc(rows),advance=pct(s.executed,s.programmed),completeRatio=s.months?pct(s.complete,s.months):0;
+  el('progressPct').textContent=`${advance.toFixed(1)}%`;
+  el('progressFill').style.width=`${advance}%`;
+  el('progressCaption').textContent=s.months?`${s.complete} de ${s.months} meses se encuentran completos.`:'Sin registros con los filtros aplicados.';
+  el('periodCount').textContent=`${s.months} ${s.months===1?'mes':'meses'}`;
+  el('fixedProgrammed').textContent=fmt(s.programmed);el('fixedExecuted').textContent=fmt(s.executed);el('fixedBalance').textContent=fmt(s.balance);
+  el('completePct').textContent=`${completeRatio.toFixed(0)}%`;el('statusDonut').style.setProperty('--p',completeRatio);
+  el('completeCount').textContent=s.complete;el('partialCount').textContent=s.partial;el('pendingCount').textContent=s.pending;
+  document.querySelectorAll('.status-filter').forEach(b=>b.classList.toggle('active',el('statusFilter').value===b.dataset.status));
 }
 
-function renderTable(rows) {
-  el('dataTable').querySelector('thead').innerHTML = `
-    <tr class="group">
-      <th colspan="2" class="group-id">Identificación</th>
-      <th colspan="6" class="group-canon">Canon mensual fijo - USD 2.000,00</th>
-      <th colspan="6" class="group-expensa">Expensa fija - USD 316,24</th>
-      <th colspan="6" class="group-servicio">Servicios básicos variables</th>
-      <th colspan="3" class="group-resumen">Resumen</th>
-    </tr>
-    <tr class="fields">
-      ${columns.map(c => `<th>${safeText(c.label)}</th>`).join('')}
-    </tr>
-  `;
-
-  const cell = (r, c) => {
-    const v = r[c.key];
-
-    if (c.type === 'money') {
-      return `<td class="money">${fmt(v)}</td>`;
-    }
-
-    if (c.type === 'badge') {
-      const badgeValue = v || 'Pendiente';
-      return `<td class="center"><span class="badge ${safeText(badgeValue)}">${safeText(badgeValue || '—')}</span></td>`;
-    }
-
-    if (c.type === 'link') {
-      return `<td class="center">${
-        v
-          ? `<a class="link-pill" href="${safeText(v)}" target="_blank" rel="noopener">Abrir</a>`
-          : '<span class="muted">—</span>'
-      }</td>`;
-    }
-
-    return `<td>${safeText(v ?? '—')}</td>`;
-  };
-
-  el('dataTable').querySelector('tbody').innerHTML = rows.length
-    ? rows.map(r => `<tr>${columns.map(c => cell(r, c)).join('')}</tr>`).join('')
-    : `<tr><td colspan="23" class="center muted">No existen registros con los filtros aplicados.</td></tr>`;
+function renderYears(rows){
+  const groups={};rows.forEach(r=>(groups[r.anio]??=[]).push(r));
+  el('yearSummary').innerHTML=Object.keys(groups).sort().map(year=>{
+    const s=calc(groups[year]),adv=pct(s.executed,s.programmed);
+    return `<article class="panel year-card"><div class="year-head"><strong>${safeText(year)}</strong><span class="mini-badge">${s.complete}/${s.months} completos</span></div><div class="year-stats"><div class="year-stat"><span>Avance</span><strong>${adv.toFixed(1)}%</strong></div><div class="year-stat"><span>Ejecutado</span><strong>${fmt(s.executed)}</strong></div><div class="year-stat"><span>Saldo</span><strong>${fmt(s.balance)}</strong></div></div></article>`;
+  }).join('')||'<div class="empty">Sin información anual para los filtros seleccionados.</div>';
 }
 
-function render() {
-  const rows = filtered();
-  renderKpis(rows);
-  renderTable(rows);
+function nextRelevant(rows){
+  const pending=rows.filter(r=>r.estado_mensual!=='Completo');
+  if(!pending.length)return null;
+  const now=new Date(),key=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  return pending.find(r=>String(r.period_key)>=key)||pending[0];
 }
 
-document.addEventListener('DOMContentLoaded', loadData);
+function renderAttention(rows){
+  const s=calc(rows),next=nextRelevant(rows);
+  const pendingMoney=rows.reduce((sum,r)=>sum+val(r.saldo_fijo),0);
+  const pendingDocs=rows.filter(r=>r.estado_mensual!=='Completo').length;
+  el('attention').innerHTML=`
+    <article class="panel attention-card"><div class="icon-wrap warn">!</div><div><h3>${pendingDocs?`${pendingDocs} periodo${pendingDocs===1?'':'s'} requieren seguimiento`:'Sin periodos pendientes'}</h3><p>${pendingDocs?`El saldo fijo pendiente del filtro actual es ${fmt(pendingMoney)}. Prioriza los meses parciales o pendientes.`:'Todos los periodos visibles se encuentran completos.'}</p></div></article>
+    <article class="panel attention-card"><div class="icon-wrap">→</div><div><h3>${next?`Siguiente foco: ${safeText(next.periodo)}`:'Control al día'}</h3><p>${next?`${safeText(next.observacion||'Revisar documentación y estado de obligaciones del periodo.')}`:'No existen observaciones pendientes en los registros visibles.'}</p></div></article>`;
+}
+
+function paymentCard(kind,label,status,executed,programmed,sub){
+  const amount=kind==='servicio'?fmt(executed):`${fmt(executed)} / ${fmt(programmed)}`;
+  return `<div class="payment ${kind}"><div class="payment-label"><span>${safeText(label)}</span></div><strong>${amount}</strong><div class="sub">${safeText(sub)}</div>${badge(status)}</div>`;
+}
+
+function renderMonths(rows){
+  const next=nextRelevant(DATA.registros)?.period_key;
+  el('visibleCount').textContent=`${rows.length} ${rows.length===1?'visible':'visibles'}`;
+  el('monthGrid').innerHTML=rows.length?rows.map((r,index)=>{
+    const pr=periodProgress(r);
+    return `<article class="month-card ${r.period_key===next?'next':''}">
+      <div class="month-head"><div class="month-title"><small>${r.period_key===next?'Próximo periodo a revisar':'Periodo contractual'}</small><h3>${safeText(r.periodo)}</h3>${badge(r.estado_mensual)}</div><div class="month-total"><span>Desembolso total</span><strong>${fmt(r.desembolso_total)}</strong></div></div>
+      <div class="month-progress"><span style="width:${pr}%"></span></div>
+      <div class="payment-grid">
+        ${paymentCard('canon','Canon',r.estado_canon,r.canon_ejecutado,r.canon_programado,'Obligación fija')}
+        ${paymentCard('expensa','Expensas',r.estado_expensas,r.expensas_ejecutadas,r.expensas_programadas,'Obligación fija')}
+        ${paymentCard('servicio','Servicios',r.estado_servicios,r.servicios_basicos,0,'Gasto variable')}
+      </div>
+      <div class="card-actions"><div class="note-preview" title="${safeText(r.observacion||'')}">${safeText(r.observacion||'Sin observación')}</div><button class="detail-btn" type="button" data-row="${index}">Ver detalle →</button></div>
+    </article>`;
+  }).join(''):'<div class="empty">No existen registros con los filtros aplicados.</div>';
+  document.querySelectorAll('.detail-btn').forEach(btn=>btn.onclick=()=>openModal(rows[Number(btn.dataset.row)]));
+}
+
+function block(title,status,items){
+  return `<section class="detail-block"><div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><h4>${safeText(title)}</h4>${badge(status)}</div><div class="detail-grid">${items.map(([label,value,raw])=>`<div class="detail-item"><span>${safeText(label)}</span>${raw?value:`<div>${detailValue(value)}</div>`}</div>`).join('')}</div></section>`;
+}
+
+function openModal(r){
+  if(!r)return;
+  el('modalTitle').textContent=`${r.periodo} · ${r.estado_mensual||'Pendiente'}`;
+  el('modalBody').innerHTML=`<div class="detail-sections">
+    ${block('Canon mensual',r.estado_canon,[['Programado',fmt(r.canon_programado)],['Ejecutado',fmt(r.canon_ejecutado)],['Saldo',fmt(r.saldo_canon)],['Factura / observación',r.factura_canon],['Fecha de pago',r.fecha_pago_canon],['Solicitud de pago',r.solicitud_pago_canon],['Expediente',detailLink(r.link_expediente_canon),true]])}
+    ${block('Expensas',r.estado_expensas,[['Programado',fmt(r.expensas_programadas)],['Ejecutado',fmt(r.expensas_ejecutadas)],['Saldo',fmt(r.saldo_expensas)],['Notificación',r.notificacion_expensas],['Fecha de pago',r.fecha_pago_expensas],['Solicitud de pago',r.solicitud_pago_expensas],['Expediente',detailLink(r.link_expediente_expensas),true]])}
+    ${block('Servicios básicos',r.estado_servicios,[['Valor registrado',fmt(r.servicios_basicos)],['Factura / observación',r.factura_servicios],['Fecha de pago',r.fecha_pago_servicios],['Solicitud de pago',r.solicitud_pago_servicios],['Expediente',detailLink(r.link_expediente_servicios),true]])}
+  </div><div class="observation"><span>Observación de control</span><p>${safeText(r.observacion||'Sin observación registrada.')}</p></div>`;
+  el('detailModal').classList.add('open');document.body.style.overflow='hidden';
+}
+function closeModal(){el('detailModal').classList.remove('open');document.body.style.overflow=''}
+
+function render(){const rows=filtered();renderExecutive(rows);renderYears(rows);renderAttention(rows);renderMonths(rows);}
+document.addEventListener('DOMContentLoaded',loadData);
 </script>
 </body>
 </html>
