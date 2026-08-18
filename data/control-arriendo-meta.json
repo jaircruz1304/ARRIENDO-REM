@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T13:07:05.935Z",
+  "generatedAt": "2026-08-18T01:48:48.911Z",
   "records": 16,
   "sheetName": "Control",
   "headerRowIndex": 3,
@@ -35,7 +35,7 @@
     "Observación de control"
   ],
   "sourceName": "SharePoint download.aspx con share id",
-  "sourceUrl": "https://fiasec-my.sharepoint.com/:x:/g/personal/jcruzg_fias_org_ec/IQD9_DrmEBFqSowUCslYrdfdARuxxJ1YNym-p5vYgaAsOd8?e=aUaXW6",
+  "sourceUrl": "https://fiasec-my.sharepoint.com/personal/jcruzg_fias_org_ec/_layouts/15/download.aspx?share=IQD9_DrmEBFqSowUCslYrdfdARuxxJ1YNym-p5vYgaAsOd8",
   "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "bytes": 24048
+  "bytes": 17406
 }
